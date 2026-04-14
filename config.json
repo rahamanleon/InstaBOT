@@ -1,11 +1,11 @@
 {
   "bot": {
-    "name": "NeoKEX iBOT V1",
+    "name": "InstaBOT",
     "version": "1.0.0",
     "author": "NeoKEX",
     "github": "https://github.com/NeoKEX",
     "prefix": "!",
-    "description": "Advanced Instagram Bot with full automation features"
+    "description": "Advanced Instagram Bot by NeoKEX"
   },
   
   "permissions": {

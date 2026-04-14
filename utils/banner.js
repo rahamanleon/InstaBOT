@@ -5,11 +5,11 @@ class Banner {
   static display() {
     const banner = `
 ╔═══════════════════════════════════════════════════════════════════╗
-║                    NEOKEX INSTAGRAM BOT V1                        ║
-╚═══════════════════════════════════════════════════════════════════╝
+║                          InstaBOT                                 ║
+╠═══════════════════════════════════════════════════════════════════╣
 ║  📦 Version: ${config.BOT_VERSION.padEnd(52)} ║
-║  👤 Author:  ${config.AUTHOR.padEnd(52)} ║
-║  🔗 GitHub:  ${config.GITHUB.padEnd(52)} ║
+║  👤 Author:  NeoKEX                                               ║
+║  🔗 GitHub:  github.com/NeoKEX                                    ║
 ╚═══════════════════════════════════════════════════════════════════╝
 `;
     console.log('\x1b[36m%s\x1b[0m', banner);
@@ -17,11 +17,11 @@ class Banner {
 
   static startupMessage(userID, username, commandCount, eventCount) {
     console.log('');
-    logger.success(`Bot started successfully`);
+    logger.success(`InstaBOT started successfully`);
     logger.info(`User: @${username || 'Loading...'} (${userID || 'Loading...'})`);
     logger.info(`Loaded ${commandCount} commands and ${eventCount} events`);
     logger.info(`Prefix: ${config.PREFIX}`);
-    logger.success(`Bot is now listening for messages...`);
+    logger.success(`InstaBOT is now listening for messages...`);
     console.log('');
   }
 
@@ -30,7 +30,6 @@ class Banner {
   }
 
   static messageReceived(from, preview) {
-    // Reduced logging for message events - only log in debug mode
     if (config.LOG_LEVEL === 'debug') {
       let previewStr = '';
       try {

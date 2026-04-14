@@ -12,51 +12,37 @@ module.exports = {
 
   async run({ api, event, logger, config }) {
     try {
-      let creditsText = `
-╔═══════════════════════════════════════════════╗
-║                                               ║
-║        ${config.BOT_NAME}                       
-║                                               ║
-╚═══════════════════════════════════════════════╝
+      const creditsText =
+`╔═══════════════════════════════════════════╗
+║               InstaBOT                   ║
+║        Advanced Instagram Bot            ║
+╚═══════════════════════════════════════════╝
 
-👤 Created by: ${config.AUTHOR}
+👑 Created by: NeoKEX
+🔗 GitHub: github.com/NeoKEX
 📦 Version: ${config.BOT_VERSION}
-🔗 GitHub: ${config.GITHUB}
+⚙️  Prefix: ${config.PREFIX}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💖 Special Thanks:
-  • All supporters and contributors
-  • Open source community
-  • Instagram Bot developers
+💡 About InstaBOT:
+  InstaBOT is a powerful, modular Instagram
+  bot built for automation and fun. Fully
+  open-source and crafted with care by NeoKEX.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-⚠️  COPYRIGHT NOTICE ⚠️
-
-This bot was created by ${config.AUTHOR}.
-Removing or modifying credits is strictly prohibited!
-
-🚫 Violations will result in:
-  ✗ Immediate ban from support
-  ✗ Loss of future updates
-  ✗ Public exposure of violation
-  ✗ Possible legal action
-
-✅ Please respect the creator's work!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌟 Like this bot? Star it on GitHub!
-🐛 Found a bug? Report it on GitHub Issues
-💡 Have suggestions? Open a GitHub Discussion
+🐛 Found a bug? Open an issue on GitHub
+💬 github.com/NeoKEX
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-`;
-      
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ Credits must not be removed or modified.`;
+
       return api.sendMessage(creditsText, event.threadId);
     } catch (error) {
-      logger.error('Error in credits command', { error: error.message, stack: error.stack });
+      logger.error('Error in credits command', { error: error.message });
       return api.sendMessage('Error displaying credits.', event.threadId);
     }
   }
