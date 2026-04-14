@@ -197,12 +197,7 @@ class InstagramBot {
       sendMessage: async (text, threadID) => {
         try {
           if (config.TYPING_INDICATOR) {
-            try {
-              await new Promise((res, rej) => {
-                sendTypingIndicator(threadID, (err) => err ? rej(err) : res());
-              });
-              await new Promise(r => setTimeout(r, 500));
-            } catch (_) {}
+            sendTypingIndicator(threadID, () => {});
           }
 
           return await new Promise((resolve, reject) => {
@@ -279,7 +274,7 @@ class InstagramBot {
       sendPhoto: async (photoPath, threadID) => {
         try {
           if (config.TYPING_INDICATOR) {
-            try { await new Promise((res, rej) => sendTypingIndicator(threadID, e => e ? rej(e) : res())); } catch (_) {}
+            sendTypingIndicator(threadID, () => {});
           }
           return await new Promise((resolve, reject) => {
             sendPhoto(threadID, photoPath, {}, (err, result) => {
@@ -296,7 +291,7 @@ class InstagramBot {
       sendVideo: async (videoPath, threadID) => {
         try {
           if (config.TYPING_INDICATOR) {
-            try { await new Promise((res, rej) => sendTypingIndicator(threadID, e => e ? rej(e) : res())); } catch (_) {}
+            sendTypingIndicator(threadID, () => {});
           }
           return await new Promise((resolve, reject) => {
             sendVideo(threadID, videoPath, {}, (err, result) => {
@@ -313,7 +308,7 @@ class InstagramBot {
       sendAudio: async (audioPath, threadID) => {
         try {
           if (config.TYPING_INDICATOR) {
-            try { await new Promise((res, rej) => sendTypingIndicator(threadID, e => e ? rej(e) : res())); } catch (_) {}
+            sendTypingIndicator(threadID, () => {});
           }
           return await new Promise((resolve, reject) => {
             sendVoice(threadID, audioPath, {}, (err, result) => {
