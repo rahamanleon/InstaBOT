@@ -1,0 +1,28 @@
+# render.yaml — Render Blueprints for InstaBOT
+# Deploys the bot as a free-tier web service with zero-config.
+# Usage: render blueprint create (from render-cli) or connect repo directly.
+
+services:
+  - type: web
+    name: instabot
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: TZ
+        value: Asia/Dhaka
+      - key: LOG_LEVEL
+        value: info
+      # Set these in Render dashboard (not here):
+      # - ACCOUNT_COOKIE
+      # - ACCOUNT_EMAIL
+      # - ACCOUNT_PASSWORD
+      # - MONGODB_URI
+      # - DATABASE_TYPE

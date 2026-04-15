@@ -158,7 +158,11 @@ module.exports = {
   })(),
 
   // ── Paths ─────────────────────────────────────────────────────────────
-  ACCOUNT_FILE:  process.env.ACCOUNT_FILE || './account.txt',
+  ACCOUNT_FILE: (() => {
+    // Support inline cookie via env var (for Render free tier — filesystem is ephemeral)
+    if (process.env.ACCOUNT_COOKIE) return '/tmp/account.txt';
+    return process.env.ACCOUNT_FILE || './account.txt';
+  })(),
   COMMANDS_PATH: './commands',
   EVENTS_PATH:   './events',
   LOGS_PATH:     './storage/logs',

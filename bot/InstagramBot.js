@@ -74,6 +74,14 @@ class InstagramBot {
       // Apply options before login (available on the login function itself)
       login.setOptions(config.OPTIONS_FCA);
 
+      // ── Render free tier fix: write env cookie to temp file ──────────────
+      // The filesystem is ephemeral on Render Free. Write the cookie
+      // from ACCOUNT_COOKIE env var to /tmp so nkxica can read it.
+      if (process.env.ACCOUNT_COOKIE) {
+        fs.writeFileSync('/tmp/account.txt', process.env.ACCOUNT_COOKIE, 'utf-8');
+        logger.info('Cookies written from ACCOUNT_COOKIE env var');
+      }
+
       await this.loadAndLogin();
 
       this._scheduleAutoRestart();
