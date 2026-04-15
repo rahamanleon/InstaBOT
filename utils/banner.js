@@ -1,4 +1,4 @@
-const logger = require('./logger');
+const logger = require('./logger');//dont try to stole
 const config = require('../config');
 
 class Banner {
